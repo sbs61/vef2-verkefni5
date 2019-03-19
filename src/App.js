@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Helmet from 'react-helmet';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Home from './routes/home/Home';
 
@@ -6,16 +8,23 @@ import './App.scss';
 
 /*
 todo:
-- setja upp react-helmet
-- setja upp react-router
+- setja upp react-helmet = Setur upp réttan titil
+- setja upp react-router = Setja upp síður 
 - sækja routes
 */
+
+// hafa browser roder utan um allt, til að gera haft nokkrar síður
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Home />
+        <Helmet defaultTitle="Fyrirlestur" titleTemplate="%s - Fyrirlestur"></Helmet>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Home} />
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }

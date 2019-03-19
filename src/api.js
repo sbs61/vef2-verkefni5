@@ -27,6 +27,10 @@ function loadSavedLectures() {
  */
 export function getLectureList(filters = []) {
   /* todo */
+  const { lectures } = data;
+  console.log(lectures);
+
+  return lectures;
 }
 
 /**
