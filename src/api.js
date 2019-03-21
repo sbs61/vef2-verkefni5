@@ -13,8 +13,12 @@ const LOCALSTORAGE_KEY = 'saved_lectures';
  * Sækir alla vistaða fyrirlestra í localStorage.
  * @returns {array} Fylki af slug fyrir vistaða fyrirlestra.
  */
-function loadSavedLectures() {
+export function loadSavedLectures() {
   /* todo */
+  const savedJson = localStorage.getItem(LOCALSTORAGE_KEY);
+  const saved = JSON.parse(savedJson) || [];
+
+  return saved;
 }
 
 /**
@@ -32,6 +36,13 @@ export function getLectureList(filters = []) {
   if(filters.length !== 0) {
     lectures = lectures.filter(item => filters.length === 0 || filters.indexOf(item.category) >= 0)
   }
+
+  const saved = loadSavedLectures();
+  lectures.map((lecture) => 
+    (saved.indexOf(lecture.slug) >= 0 ) ?
+      lecture.finished = true : lecture.finished = false
+  )
+
   return lectures;
 }
 
@@ -44,6 +55,20 @@ export function getLectureList(filters = []) {
  */
 export function getLecture(slug) {
   /* todo */
+  const { lectures } = data;
+  const lecture = lectures.find(item => slug === item.slug);
+
+  const saved = loadSavedLectures();
+  if(lecture){
+    if(saved.indexOf(slug) >= 0 ) {
+      lecture.finished = true;
+    } else {
+      lecture.finished = false;
+    }
+    return lecture
+  }
+
+  return null;
 }
 
 /**
@@ -54,4 +79,15 @@ export function getLecture(slug) {
  */
 export function toggleLectureFinish(slug) {
   /* todo */
+  const saved = loadSavedLectures();
+
+  const index = saved.indexOf(slug);
+
+  if (index >= 0) {
+    saved.splice(index, 1);
+  } else {
+    saved.push(slug);
+  }
+
+  localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(saved));
 }

@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Home from './routes/home/Home';
+import Lecture from './routes/lecture/Lecture';
 
 import './App.scss';
 
@@ -23,6 +24,7 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/:slug" component={Lecture} />
           </Switch>
         </BrowserRouter>
       </div>
