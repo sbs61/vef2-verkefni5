@@ -11,13 +11,18 @@ export default class Home extends Component {
     lectures: getLectureList(),
   }
 
+  onFilter = (active) => {
+    this.setState({ lectures: getLectureList(active) });
+  }
+
+
   render() {
     const { lectures } = this.state;
 
     return (
       <React.Fragment>
         <Header category="Vefforritun" title="Fyrirlestrar" />
-        <Lectures lectures={lectures}/>
+        <Lectures lectures={lectures} onFilter={this.onFilter}/>
       </React.Fragment>
     );
   }
