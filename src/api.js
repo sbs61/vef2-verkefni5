@@ -28,13 +28,17 @@ export function loadSavedLectures() {
  */
 export function getLectureList(filters = []) {
   /* todo */
-  var { lectures } = data;
+  const { lectures } = data;
 
-  if(filters.length !== 0) {
-    lectures = lectures.filter(item => filters.length === 0 || filters.indexOf(item.category) >= 0)
-  }
-
-  return lectures;
+  const lecturesList = lectures.filter(item => filters.length === 0 || filters.indexOf(item.category) >= 0)
+  
+  const saved = loadSavedLectures();
+  lecturesList.map((lecture) => 
+    (saved.indexOf(lecture.slug) >= 0 )?
+      lecture.finished = true : lecture.finished = false
+  )
+  
+  return lectures.filter(item => filters.length === 0 || filters.indexOf(item.category) >= 0);
 }
 
 /**
