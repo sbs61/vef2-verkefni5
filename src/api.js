@@ -15,7 +15,10 @@ const LOCALSTORAGE_KEY = 'saved_lectures';
  */
 export function loadSavedLectures() {
   /* todo */
-  return JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+  const savedJson = localStorage.getItem(LOCALSTORAGE_KEY);
+  const saved = JSON.parse(savedJson) || [];
+
+  return saved;
 }
 
 /**
@@ -64,7 +67,6 @@ export function getLecture(slug) {
     }
     return lecture
   }
-
   return null;
 }
 
