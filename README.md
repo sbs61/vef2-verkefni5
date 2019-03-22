@@ -1,3 +1,11 @@
+# Keyrsla
+ 
+npm install
+ 
+npm test 
+ 
+npm start
+
 # Verkefni 5
 
 Verkefni 5 snýst um að endurútfæra framenda úr [seinna hópverkefni í vefforritun 1, 2018](https://github.com/vefforritun/vef1-2018-h2-synilausn) með React.
