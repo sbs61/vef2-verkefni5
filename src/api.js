@@ -15,10 +15,7 @@ const LOCALSTORAGE_KEY = 'saved_lectures';
  */
 export function loadSavedLectures() {
   /* todo */
-  const savedJson = localStorage.getItem(LOCALSTORAGE_KEY);
-  const saved = JSON.parse(savedJson) || [];
-
-  return saved;
+  return JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
 }
 
 /**
@@ -81,10 +78,10 @@ export function toggleLectureFinish(slug) {
   /* todo */
   const saved = loadSavedLectures();
 
-  const index = saved.indexOf(slug);
+  const i = saved.indexOf(slug);
 
-  if (index >= 0) {
-    saved.splice(index, 1);
+  if (i >= 0) {
+    saved.splice(i, 1);
   } else {
     saved.push(slug);
   }

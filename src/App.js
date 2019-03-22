@@ -4,8 +4,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Home from './routes/home/Home';
 import Lecture from './routes/lecture/Lecture';
+import NotFound from './routes/notFound/NotFound'
 
 import './App.scss';
+import { getLecture } from './api';
 
 /*
 todo:
@@ -17,14 +19,17 @@ todo:
 // hafa browser roder utan um allt, til að gera haft nokkrar síður
 
 class App extends Component {
+
+
   render() {
     return (
       <div className="App">
-        <Helmet defaultTitle="Fyrirlestur" titleTemplate="%s - Fyrirlestur"></Helmet>
+        <Helmet  defaultTitle="Fyrirlestrar" titleTemplate="%s – Fyrirlestur"></Helmet>
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/:slug" component={Lecture} />
+            <Route component={NotFound}/>
           </Switch>
         </BrowserRouter>
       </div>

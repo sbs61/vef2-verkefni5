@@ -7,7 +7,7 @@ state = {
     active: [],
 }
 
-onClickHandler = (type) => (e) => {
+toggleFilter = (type) => (e) => {
   const { active } = this.state;
   const { onFilter } = this.props;
   const { target } = e;
@@ -27,13 +27,13 @@ render() {
     return (
       <ul className="filters">
         <li>
-          <button className="filters__filter filters__filter--html" onClick={this.onClickHandler('html')}>HTML</button>
+          <button className="filters__filter filters__filter--html" onClick={this.toggleFilter('html')}>HTML</button>
         </li>
         <li>
-          <button className="filters__filter filters__filter--css" onClick={this.onClickHandler('css')}>CSS</button>
+          <button className="filters__filter filters__filter--css" onClick={this.toggleFilter('css')}>CSS</button>
         </li>
         <li>
-          <button className="filters__filter filters__filter--js" onClick={this.onClickHandler('javascript')}>JS</button> 
+          <button className="filters__filter filters__filter--js" onClick={this.toggleFilter('javascript')}>JS</button> 
         </li>
       </ul>
     );
