@@ -7,7 +7,6 @@ import Lecture from './routes/lecture/Lecture';
 import NotFound from './routes/notFound/NotFound'
 
 import './App.scss';
-import { getLecture } from './api';
 
 /*
 todo:

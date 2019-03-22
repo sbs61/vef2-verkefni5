@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getLecture, toggleLectureFinish, loadSavedLectures } from '../../api';
+import { getLecture } from '../../api';
 import { Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
