@@ -10,9 +10,9 @@ export default class Lectures extends React.Component {
       return (
         <div className="list">
         <div className="list__row">
-            {lectures.map(lecture => {
+            {lectures.map((lecture, k) => {
                 return (
-                  <div className="list__col">
+                  <div key={k} className="list__col">
                     <a className="listItem" href={lecture.slug}>
                       <div className="listItem__image">
                         <img src={lecture.thumbnail} alt=""></img>

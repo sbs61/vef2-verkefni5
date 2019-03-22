@@ -33,9 +33,9 @@ export default class Lecture extends React.Component {
       <div className="lecture__content">
         <div className="lecture__row">
           <div className="lecture__col">
-            {lecture.content.map(item => {
+            {lecture.content.map((item, k) => {
                 return (
-                  <Item item={item}/> 
+                  <Item key={k} item={item}/> 
                 );
               })}
           </div>
